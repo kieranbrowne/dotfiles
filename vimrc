@@ -48,11 +48,6 @@ set expandtab
 " Linenumbers
 set number 
 
-" Quick Pairs
-imap ( ()<ESC>i
-imap [ []<ESC>i
-imap { {}<ESC>i
-
 " Stop D deleting itself in insert mode
 ino <D> <Nop>
 

@@ -5,11 +5,14 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="minimal"
+ZSH_THEME="custom"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c="clear"
+alias l="ls"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -66,6 +69,7 @@ export PATH="/home/kieran/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

@@ -57,3 +57,4 @@ fi
 }
 
 install_zsh
+ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
