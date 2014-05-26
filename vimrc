@@ -7,7 +7,8 @@ filetype plugin on
 " Custom coloring
 colorscheme jellybeans
 highlight Normal ctermfg=grey
-highlight Comment ctermfg=black
+highlight Comment ctermfg=red
+highlight LineNr ctermfg=grey
 
 " Plugin Shortcuts
 nmap <leader>nt :NERDTree<CR>
