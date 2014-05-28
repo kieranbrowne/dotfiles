@@ -1,15 +1,34 @@
 #Dotfiles
 
-This repo includes:
-- my rc files for bash, zsh and vim
-- a mod of the oh-my-zsh minimal theme 
-- a script to test network download speeds
-- a script to produce a random 16 character password
-- a script to create a compressed and encrypted backup of the home directory
-- a script to find devices connected to the local network
-- a script to create adobe bridge style contact sheets
-- a script to create photo montages from a given directory
-- an installation script to put everything in the right place
+## Features
+### zshrc
+- clean, minimal theme
+- auto install oh-my-zsh
+- access to rc files from any directory with ```vimrc```,```zshrc``` etc.
+
+### vimrc
+- jellybeans colour theme
+- arrowkeys organise code
+    - up + down reorder lines
+    - left + right indent 
+- ```tab``` inserts 4 spaces
+- leader shortcuts
+    - ```\s``` save
+    - ```\q``` quit
+    - ```\r``` run code (requires shebang line and executable permissions)
+    - ```\nt``` open NERDTREE
+
+### bin/
+- ```runbackup``` one command compresses and encrypts important folders
+    - easy to edit for own folders
+- ```netspeed``` tests real download speeds
+- ```ipsearch``` lists devices connected to local network
+- ```passgen``` generates random password
+    - 16 characters by default
+    - use argument for specific length e.g. ```passgen 8``` for 8 chars long
+- ```makeContactSheet``` creates an adobe bridge style contact sheet
+    - works for all .jpg and .png in directory
+- ```collage``` creates a square collage of images in directory 
 
 ##Installation
 ```
