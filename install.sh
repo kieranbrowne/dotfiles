@@ -57,4 +57,7 @@ fi
 }
 
 install_zsh
+# link custom theme into the themes folder
 ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
+# symlink the bin folder
+ln -s $dir/bin ~/bin

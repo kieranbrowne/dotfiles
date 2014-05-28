@@ -1,0 +1,24 @@
+#!/bin/bash
+# this script creates a photo montage of the .jpg files in the current working directory
+convert "*.jpg" -resize 100x100^ -gravity center -extent 100x100 "thumb.jpg"
+
+#ls -1|grep thumb
+numImages=$(ls -1|grep thumb|wc -l)
+echo $numImages
+squareFloat=$(echo 'scale=2;sqrt('$numImages')' | bc)
+square=${squareFloat/.*}
+echo "the closest square number is" $square
+square=$(($square - 1))
+
+
+for i in `seq 0 $square`;
+#do convert $(ttt j in `seq $(($i * ($square + 1))) $((($i * ($square + 1)) + $square))`;do echo thumb-$((($i * $square) +($j + 1))).jpg;done) +append `echo horizontal-$i.jpg`;
+do convert $(for j in `seq $(($i * ($square + 1))) $((($i * ($square + 1)) + $square))`;do echo thumb-$j.jpg;done;) +append `echo horizontal-$i.jpg`;
+
+done;
+
+convert $(for i in `seq 0 $square`;do echo horizontal-$i.jpg;done) -append collage.jpg;
+
+
+rm thumb*.jpg 
+rm horizontal*.jpg
