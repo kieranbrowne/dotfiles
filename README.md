@@ -4,6 +4,7 @@
 ### zshrc
 - clean, minimal theme
 - auto install oh-my-zsh
+- ```rm``` moves files to trash
 - access to rc files from any directory with ```vimrc```,```zshrc``` etc.
 
 ### vimrc

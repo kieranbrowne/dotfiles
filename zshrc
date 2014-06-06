@@ -7,12 +7,12 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="custom"
 
-# Example aliases
+# Aliases
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="clear"
 alias l="ls"
+alias rm="mvtotrash"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
