@@ -30,6 +30,7 @@
 - ```makeContactSheet``` creates an adobe bridge style contact sheet
     - works for all .jpg and .png in directory
 - ```collage``` creates a square collage of images in directory 
+- ```gitnumlines``` returns the number of tracked lines of code in a repo
 
 ##Installation
 ```

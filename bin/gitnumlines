@@ -1,0 +1,3 @@
+#/bin/bash
+len=`git ls-files | xargs cat | wc -l`
+echo "This repo contains" $len "tracked lines of code." 
