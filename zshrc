@@ -12,6 +12,7 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias c="clear"
 alias l="ls"
+alias rm="mvtotrash"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

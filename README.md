@@ -4,6 +4,7 @@
 ### zshrc
 - clean, minimal theme
 - auto install oh-my-zsh
+- ```rm``` moves files to trash
 - access to rc files from any directory with ```vimrc```,```zshrc``` etc.
 
 ### vimrc
@@ -30,7 +31,6 @@
     - works for all .jpg and .png in directory
 - ```collage``` creates a square collage of images in directory 
 - ```gitnumlines``` returns the number of tracked lines of code in a repo
-- ```trash``` move file to trash folder. Potential replacement for ```rm```
 
 ##Installation
 ```
