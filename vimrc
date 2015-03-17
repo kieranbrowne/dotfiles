@@ -17,6 +17,8 @@ nmap <leader>nt :NERDTree<CR>
 " Save file
 map <leader>s <ESC>:w<CR>
 imap <leader>s <ESC>:w<CR>
+nmap <c-s> :w<CR>
+imap <c-s> :w<CR>a
 " Quit Vim
 map <leader>q <ESC>:q<CR>
 imap <leader>q <ESC>:q<CR>
