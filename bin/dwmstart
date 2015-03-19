@@ -1,0 +1,14 @@
+#!/bin/bash
+gconftool-2 --set /apps/nautilus/preferences/show_desktop --type boolean false
+feh --bg-scale ~/Pictures/tla.png
+
+gnome-terminal &
+
+while true; do
+TIME=$(echo ` date +"%R"` )
+BATT=$( acpi -b | sed 's/.*[charging|unknown], \([0-9]*\)%.*/\1/gi' )
+STATUS=$( acpi -b | sed 's/.*: \([a-zA-Z]*\),.*/\1/gi' )
+xsetroot -name "`echo $BATT % $TIME`"
+sleep 5
+done  &
+exec dwm

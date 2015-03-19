@@ -1,4 +1,3 @@
-#!/bin/bash
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -30,6 +29,17 @@ echo "Moving any existing dotfiles from ~ to $olddir"
     ln -s $dir/$file ~/.$file
 done
 
+sudo apt-get install curl
+
+install_vim () {
+    sudo apt-get install vim 
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    cd ~/.vim/bundle
+    git clone https://github.com/scrooloose/nerdtree.git
+    git clone https://github.com/nanotech/jellybeans.vim.git
+}
+
 install_zsh () {
 # Test to see if zshell is installed. If it is:
 if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
@@ -57,7 +67,9 @@ fi
 }
 
 install_zsh
+install_vim
 # link custom theme into the themes folder
 ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
 # symlink the bin folder
-ln -s $dir/bin ~/bin
+cd ~
+ln -s $dir/bin

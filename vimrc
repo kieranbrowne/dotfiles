@@ -11,12 +11,15 @@ highlight Comment ctermfg=red
 highlight LineNr ctermfg=grey
 
 " Plugin Shortcuts
-nmap <leader>nt :NERDTree<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Leader Shortcuts
 " Save file
 map <leader>s <ESC>:w<CR>
 imap <leader>s <ESC>:w<CR>
+nmap <c-s> :w<CR>
+imap <c-s> :w<CR>a
 " Quit Vim
 map <leader>q <ESC>:q<CR>
 imap <leader>q <ESC>:q<CR>
