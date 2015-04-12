@@ -1,14 +1,17 @@
 " setup pathogen
 execute pathogen#infect()
-syntax on
+syntax enable
 filetype plugin indent on
 filetype plugin on
 
 " Custom coloring
-colorscheme jellybeans
-highlight Normal ctermfg=grey
-highlight Comment ctermfg=red
-highlight LineNr ctermfg=grey
+map <leader>d <ESC>:!bash ~/gnome-terminal-colors-solarized/set_dark.sh<CR><CR>
+map <leader>l <ESC>:!bash ~/gnome-terminal-colors-solarized/set_light.sh<CR><CR>
+
+"highlight Special ctermbg=grey
+"highlight Normal ctermbg=grey
+"highlight Comment ctermfg=red
+"highlight LineNr ctermfg=grey
 
 " Plugin Shortcuts
 nmap <leader>nt :NERDTreeToggle<CR>
@@ -23,16 +26,6 @@ imap <c-s> :w<CR>a
 " Quit Vim
 map <leader>q <ESC>:q<CR>
 imap <leader>q <ESC>:q<CR>
-" Run file if executable
-map <leader>r <ESC>:!./%<CR>
-imap <leader>r <ESC>:!./%<CR>
-" Run main.py
-map <leader>m <ESC>:!./main.py<CR>
-imap <leader>m <ESC>:!./main.py<CR>
-
-" Emacs-like beginning and end of line.
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
 
 " Unmap the arrow keys
 no <left> <<
@@ -55,7 +48,7 @@ set number
 " Stop D deleting itself in insert mode
 ino <D> <Nop>
 
-" Auto typo fixer
+" typos
 iabbr ture true
 iabbr Ture True
 iabbr flase false

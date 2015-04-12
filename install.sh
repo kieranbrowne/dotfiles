@@ -37,7 +37,6 @@ install_vim () {
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     cd ~/.vim/bundle
     git clone https://github.com/scrooloose/nerdtree.git
-    git clone https://github.com/nanotech/jellybeans.vim.git
 }
 
 install_zsh () {
@@ -73,3 +72,10 @@ ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
 # symlink the bin folder
 cd ~
 ln -s $dir/bin
+# set solarized colorscheme
+cd ~
+wget --no-check-certificate -O .dircolors https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-light
+eval `dircolors ~/.dircolors`
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+./set_dark.sh

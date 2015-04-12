@@ -3,12 +3,9 @@
 ## Features
 ### zshrc
 - clean, minimal theme
-- auto install oh-my-zsh
-- ```rm``` moves files to trash
-- access to rc files from any directory with ```vimrc```,```zshrc``` etc.
+- auto install [zsh](http://www.zsh.org), [vim](http://www.vim.org), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [nerdTree](https://github.com/scrooloose/nerdtree), [solarized](https://github.com/altercation/solarized)
 
 ### vimrc
-- jellybeans colour theme
 - arrowkeys organise code
     - up + down reorder lines
     - left + right indent 
@@ -16,8 +13,9 @@
 - leader shortcuts
     - ```\s``` save
     - ```\q``` quit
-    - ```\r``` run code (requires shebang line and executable permissions)
     - ```\nt``` open NERDTREE
+    - ```\l``` set solarized light theme
+    - ```\d``` set solarized dark theme
 
 ### bin/
 - ```runbackup``` one command compresses and encrypts important folders
