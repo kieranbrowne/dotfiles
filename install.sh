@@ -74,7 +74,7 @@ cd ~
 ln -s $dir/bin
 # set solarized colorscheme
 cd ~
-wget --no-check-certificate -O .dircolors https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-light
+wget --no-check-certificate -O .dircolors https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
 eval `dircolors ~/.dircolors`
 git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
 cd gnome-terminal-colors-solarized
