@@ -13,6 +13,10 @@ map <leader>l <ESC>:!bash ~/gnome-terminal-colors-solarized/set_light.sh<CR><CR>
 "highlight Comment ctermfg=red
 "highlight LineNr ctermfg=grey
 
+" Case sensitivity for / search
+set ignorecase
+set incsearch
+
 " Plugin Shortcuts
 nmap <leader>nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -54,3 +58,4 @@ iabbr Ture True
 iabbr flase false
 iabbr Flase False
 
+autocmd filetype tex :277 
