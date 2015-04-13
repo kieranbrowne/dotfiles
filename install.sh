@@ -69,6 +69,8 @@ install_zsh
 install_vim
 # link custom theme into the themes folder
 ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
+# symlink the gimprc
+ln -s $dir/gimprc ~/.gimp-2.8/gimprc
 # symlink the bin folder
 cd ~
 ln -s $dir/bin
