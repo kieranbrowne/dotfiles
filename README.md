@@ -30,11 +30,10 @@
 - ```collage``` creates a square collage of images in directory 
 - ```gitnumlines``` returns the number of tracked lines of code in a repo
 
-##Installation
+###Installation
 ```
 git clone https://github.com/kieranbrowne/dotfiles ~/dotfiles
 bash ~/dotfiles/install.sh
 ```
-
-Installation script forked from Michael J. Smalley's makesymlinks.sh
-https://github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
+###Acknowledgements
+Installation script based on `makesymlinks.sh` by [Michael J. Smalley](https://github.com/michaeljsmalley/dotfiles]
