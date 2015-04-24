@@ -8,11 +8,6 @@ filetype plugin on
 map <leader>d <ESC>:!bash ~/gnome-terminal-colors-solarized/set_dark.sh<CR><CR>
 map <leader>l <ESC>:!bash ~/gnome-terminal-colors-solarized/set_light.sh<CR><CR>
 
-"highlight Special ctermbg=grey
-"highlight Normal ctermbg=grey
-"highlight Comment ctermfg=red
-"highlight LineNr ctermfg=grey
-
 " Case sensitivity for / search
 set ignorecase
 set incsearch
