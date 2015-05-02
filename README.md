@@ -1,11 +1,12 @@
-#Dotfiles
+###Dotfiles
 
-## Features
-### zshrc
-- clean, minimal theme
+#####Features
 - auto install [zsh](http://www.zsh.org), [vim](http://www.vim.org), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [nerdTree](https://github.com/scrooloose/nerdtree), [solarized](https://github.com/altercation/solarized)
 
-### vimrc
+#####zshrc
+- clean, minimal theme
+
+#####vimrc
 - arrowkeys organise code
     - up + down reorder lines
     - left + right indent 
@@ -17,7 +18,7 @@
     - ```\l``` set solarized light theme
     - ```\d``` set solarized dark theme
 
-### bin/
+#####bin/
 - ```runbackup``` one command compresses and encrypts important folders
     - easy to edit for own folders
 - ```netspeed``` tests real download speeds
@@ -30,10 +31,10 @@
 - ```collage``` creates a square collage of images in directory 
 - ```gitnumlines``` returns the number of tracked lines of code in a repo
 
-###Installation
+#####Installation
 ```
 git clone https://github.com/kieranbrowne/dotfiles ~/dotfiles
 bash ~/dotfiles/install.sh
 ```
-###Acknowledgements
-Installation script based on `makesymlinks.sh` by [Michael J. Smalley](https://github.com/michaeljsmalley/dotfiles]
+#####Acknowledgements
+Installation script based on `makesymlinks.sh` by [Michael J. Smalley](https://github.com/michaeljsmalley/dotfiles)
