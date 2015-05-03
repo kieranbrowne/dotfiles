@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+from turtle import *
+from time import sleep
+import fileinput
+import sys
+
+def setup():
+    screensize(600,600)
+    setworldcoordinates(0,150,150,0)
+    color('black', 'white')
+    hideturtle()
+    speed(0)
+    delay(0)
+
+def draw(lines):
+    for line in lines:
+        process(line)
+
+def process(line):
+    try:
+        coords = line.split(' ')
+        x = float( coords[0] )
+        y = float( coords[1] )
+        d = int  ( coords[2] )
+
+        if d == 0:
+            penup()
+        else:
+            pendown()
+
+        setpos(x,y)
+    except:
+        print 'error'
+
+
+# -- main
+if len(sys.argv) > 1:
+    setup()
+    draw(fileinput.input())
+    sleep(3)
+
