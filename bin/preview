@@ -14,7 +14,9 @@ def setup():
 
 def draw(lines):
     for line in lines:
-        process(line)
+        if not process(line):
+            print "file does not contain the approriate data"
+            break
 
 def process(line):
     try:
@@ -29,13 +31,14 @@ def process(line):
             pendown()
 
         setpos(x,y)
+        return True
     except:
-        print 'error'
+        return False
 
 
 # -- main
 if len(sys.argv) > 1:
     setup()
     draw(fileinput.input())
-    sleep(3)
+    sleep(2)
 
