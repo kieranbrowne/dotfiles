@@ -4,7 +4,7 @@ import urllib2
 from datetime import datetime
 
 startTime = datetime.now()
-u = urllib2.urlopen('https://github.com/kieranbrowne/dotfiles')
+u = urllib2.urlopen('https://raw.githubusercontent.com/kieranbrowne/dotfiles/master/README.md')
 endTime = datetime.now()
 
 #account for computational time
