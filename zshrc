@@ -42,7 +42,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/kieran/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:`ls -d -1 /opt/processing-2*`
 # export MANPATH="/usr/local/man:$MANPATH"
 
