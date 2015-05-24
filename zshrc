@@ -64,3 +64,8 @@ export EDITOR='vim'
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+if [ -d /home/pi/of_v0.8.4_linuxarmv7l_release/ ]
+then
+    export MAKEFLAGS=-j4 PLATFORM_VARIANT=rpi2
+    echo oF on rPi2
+fi
