@@ -6,39 +6,66 @@ import sys
 
 def setup():
     screensize(600,600)
-    setworldcoordinates(0,150,150,0)
     color('black', 'white')
     hideturtle()
     speed(0)
     delay(0)
 
-def draw(lines):
-    for line in lines:
-        if not process(line):
-            print "file does not contain the approriate data"
-            break
+def getData(lines):
+    x,y,d = [],[],[]
+    try:
+        i = 0
+        for line in lines:
+            data = process(line)
+            x.append(data[0])
+            y.append(data[1])
+            d.append(data[2])
+            i = i+1
+    except:
+        print "file does not contain the approriate data"
+    return (x,y,d)
+
 
 def process(line):
+    x,y,d = 0,0,0
     try:
         coords = line.split(' ')
         x = float( coords[0] )
         y = float( coords[1] )
         d = int  ( coords[2] )
+    except:
+        print "Error"
+    return x,y,d
 
-        if d == 0:
+def draw((x,y,d)):
+    
+    hideturtle()
+    speed(0)
+    delay(0)
+
+    setworldcoordinates(min(x),max(x),max(y),min(y))
+    for i in range(len(x)):
+        if d[i] == 0:
             penup()
         else:
             pendown()
+        setpos(x[i],y[i])
 
-        setpos(x,y)
-        return True
-    except:
-        return False
-
+def remap(x, inMin,inMax,outMin,outMax):
+    #range check
+    if inMin == inMax or outMin == outMax:
+        print "Range error"
+        return None
+    result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin
+    return result   
 
 # -- main
 if len(sys.argv) > 1:
-    setup()
-    draw(fileinput.input())
+    
+    hideturtle()
+    speed(0)
+    delay(0)
+    #setup()
+    draw(getData(fileinput.input()))
     sleep(2)
 
