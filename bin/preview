@@ -43,7 +43,7 @@ def draw((x,y,d)):
     speed(0)
     delay(0)
 
-    setworldcoordinates(min(x),max(x),max(y),min(y))
+    setworldcoordinates(min(x)-20,max(x)+20,max(y)+20,min(y)-20)
     for i in range(len(x)):
         if d[i] == 0:
             penup()
