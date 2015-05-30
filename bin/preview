@@ -5,7 +5,6 @@ import fileinput
 import sys
 
 def setup():
-    screensize(600,600)
     color('black', 'white')
     hideturtle()
     speed(0)
@@ -62,6 +61,7 @@ def remap(x, inMin,inMax,outMin,outMax):
 # -- main
 if len(sys.argv) > 1:
     
+    screensize(600,600)
     hideturtle()
     speed(0)
     delay(0)
