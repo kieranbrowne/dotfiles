@@ -1,29 +1,20 @@
 #!/usr/bin/env python
-from turtle import *
-from time import sleep
+import pygame
 import fileinput
 import sys
 
-def setup():
-    color('black', 'white')
-    hideturtle()
-    speed(0)
-    delay(0)
+pygame.init()
 
+#functions
 def getData(lines):
-    x,y,d = [],[],[]
+    data = []
     try:
-        i = 0
         for line in lines:
-            data = process(line)
-            x.append(data[0])
-            y.append(data[1])
-            d.append(data[2])
-            i = i+1
+            x,y,d = process(line)
+            data.append((x,y,d))
     except:
         print "file does not contain the approriate data"
-    return (x,y,d)
-
+    return data
 
 def process(line):
     x,y,d = 0,0,0
@@ -36,19 +27,28 @@ def process(line):
         print "Error"
     return x,y,d
 
-def draw((x,y,d)):
-    
-    hideturtle()
-    speed(0)
-    delay(0)
+def drawData(data):
+    z = zip(*data)
+    scale = max(max(z[0])-min(z[0]),max(z[1])-min(z[1]))
+    minX = min(z[0])
+    minY = min(z[1])
+    del z
 
-    setworldcoordinates(min(x)-20,max(x)+20,max(y)+20,min(y)-20)
-    for i in range(len(x)):
-        if d[i] == 0:
-            penup()
-        else:
-            pendown()
-        setpos(x[i],y[i])
+    line = []
+    i = 0
+    while i < len(data):
+        while i < len(data) and data[i][2] != 0:
+            line.append((
+                remap(data[i][0],minX,minX+scale,0,screenSize[0]),
+                remap(data[i][1],minY,minY+scale,0,screenSize[1])))
+            i = i+1
+
+        i = i+1
+
+        if len(line) > 1:
+            pygame.draw.lines(screen,black,False,line,1)
+            del line[:]
+
 
 def remap(x, inMin,inMax,outMin,outMax):
     #range check
@@ -58,14 +58,26 @@ def remap(x, inMin,inMax,outMin,outMax):
     result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin
     return result   
 
-# -- main
-if len(sys.argv) > 1:
-    
-    screensize(600,600)
-    hideturtle()
-    speed(0)
-    delay(0)
-    #setup()
-    draw(getData(fileinput.input()))
-    sleep(2)
 
+#colours
+black = (0,0,0)
+white = (255,255,255)
+
+#setup screen
+screenSize = (600,600)
+screen = pygame.display.set_mode(screenSize)
+screen.fill(white)
+
+if len(sys.argv) > 1:
+    #read data
+    instructions = getData(fileinput.input())
+    #draw data
+    drawData(instructions);
+
+
+#main loop
+while(True):
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+             pygame.quit(); sys.exit();
