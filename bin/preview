@@ -47,13 +47,53 @@ def drawData(data):
             i = i+1
 
         if len(line) > 1:
-            pygame.draw.lines(screen,black,False,line,1)
+            pygame.draw.aalines(screen,black,False,line,1)
 
         del line[:]
 
         pygame.display.update()
             
+def drawDataColour(data):
+    cyan = (0,255,255)
+    magenta = (255,0,255)
+    yellow = (255,255,0)
+    colour = (0,0,0)
 
+    z = zip(*data)
+    scale = max(max(z[0])-min(z[0]),max(z[1])-min(z[1]))
+    minX = min(z[0])
+    minY = min(z[1])
+    del z
+
+    line = []
+    i = 0
+    currentDraw = 0
+    while i < len(data):
+        while i < len(data) and data[i][2] == currentDraw:
+            line.append((
+                remap(data[i][0],minX,minX+scale,0,screenSize[0]),
+                remap(data[i][1],minY,minY+scale,0,screenSize[1])))
+            i = i+1
+
+        if i < len(data):
+            currentDraw = data[i][2]
+
+        if len(line) > 1:
+            if data[i-1][2] == 1:
+                colour = cyan
+            elif data[i-1][2] == 2:
+                colour = magenta
+            elif data[i-1][2] == 3:
+                colour = yellow
+            else:
+                colour = (0,0,0)
+            pygame.draw.aalines(screen,colour,False,line,1)
+
+
+        del line[:]
+
+        pygame.display.update()
+  
 
 def remap(x, inMin,inMax,outMin,outMax):
     #range check
@@ -73,10 +113,11 @@ screenSize = (600,600)
 screen = pygame.display.set_mode(screenSize)
 screen.fill(white)
 
-if len(sys.argv) > 1:
-    #read data
-    instructions = getData(fileinput.input())
-    #draw data
+if len(sys.argv) > 2 and sys.argv[1] in ['-c', 'color', 'colour']:
+    instructions = getData(fileinput.input(sys.argv[2]))
+    drawDataColour(instructions);
+elif len(sys.argv) > 1:
+    instructions = getData(fileinput.input(sys.argv[1]))
     drawData(instructions);
 
 
