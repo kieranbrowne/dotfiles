@@ -109,7 +109,7 @@ black = (0,0,0)
 white = (255,255,255)
 
 #setup screen
-screenSize = (600,600)
+screenSize = (800,800)
 screen = pygame.display.set_mode(screenSize)
 screen.fill(white)
 
@@ -125,5 +125,5 @@ elif len(sys.argv) > 1:
 while(True):
     pygame.display.update()
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT or pygame.key.get_pressed()[pygame.K_ESCAPE]:
              pygame.quit(); sys.exit();
