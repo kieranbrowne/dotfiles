@@ -2,6 +2,7 @@
 import pygame
 import fileinput
 import sys
+from time import sleep
 
 pygame.init()
 
@@ -52,6 +53,7 @@ def drawData(data):
         del line[:]
 
         pygame.display.update()
+        sleep(.01)
             
 def drawDataColour(data):
     cyan = (0,255,255)
@@ -93,6 +95,7 @@ def drawDataColour(data):
         del line[:]
 
         pygame.display.update()
+        sleep(.1)
   
 
 def remap(x, inMin,inMax,outMin,outMax):
