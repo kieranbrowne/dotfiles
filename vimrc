@@ -16,6 +16,8 @@ set incsearch
 nmap <leader>nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+let g:user_emmet_leader_key='<C-Z>'
+
 " Leader Shortcuts
 " Save file
 map <leader>s <ESC>:w<CR>

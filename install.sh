@@ -33,6 +33,9 @@ install_vim () {
     if [ ! -d nerdtree/ ]; then
         git clone https://github.com/scrooloose/nerdtree.git
     fi
+    if [ ! -d emmet-vim/ ]; then
+        git clone https://github.com/mattn/emmet-vim.git
+    fi
 }
 
 install_zsh () {
