@@ -1,0 +1,9 @@
+#!/bin/bash
+git clone https://github.com/kieranbrowne/sass-files
+cd sass-files/
+mv * .[^.]* ..
+cd ../
+rmdir sass-files/
+sudo rm -r .git
+rm .gitignore
+rm README.md

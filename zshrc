@@ -17,6 +17,8 @@ alias l="ls"
 CASE_SENSITIVE="false"
 
 export UPDATE_ZSH_DAYS=30
+DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE=true
 
 DISABLE_LS_COLORS="false"
 
@@ -45,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.cabal/bin
-export PATH=$PATH:`ls -d -1 /opt/processing-2*`
+#export PATH=$PATH:`ls -d -1 /opt/processing-2*`
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
