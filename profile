@@ -20,3 +20,6 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+export GHC_HOME=$HOME/Development/bin/ghc  
+export PATH=$GHC_HOME/bin:${PATH}

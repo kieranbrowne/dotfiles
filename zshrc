@@ -69,3 +69,6 @@ then
     export MAKEFLAGS=-j4 PLATFORM_VARIANT=rpi2
     echo oF on rPi2
 fi
+# Haskell stuff
+export CABAL_HOME=$HOME/.cabal
+export PATH=$CABAL_HOME/bin:$PATH
