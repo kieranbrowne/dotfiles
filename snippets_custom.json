@@ -1,0 +1,11 @@
+{
+  "scss": {
+      "extends": "css",
+      "snippets": {
+        "+i": "@include |",
+        "+include": "@include |",
+        "+span($)": "@include span($);|",
+        "fs": "font-size: |;"
+      }
+  }
+}

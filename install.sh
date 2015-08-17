@@ -7,7 +7,7 @@
 
 dir=~/dotfiles # dotfiles directory
 olddir=~/dotfiles_old # old dotfiles backup directory
-files="bashrc vimrc zshrc profile oh-my-zsh ghci" # list of files/folders to symlink in homedir
+files="bashrc vimrc zshrc profile oh-my-zsh ghci snippets_custom.json" # list of files/folders to symlink in homedir
 
 ##########
 
@@ -23,10 +23,10 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-sudo apt-get install curl
+#sudo apt-get install curl
 
 install_vim () {
-    sudo apt-get install vim 
+    #sudo apt-get install vim 
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     cd ~/.vim/bundle
@@ -35,6 +35,9 @@ install_vim () {
     fi
     if [ ! -d emmet-vim/ ]; then
         git clone https://github.com/mattn/emmet-vim.git
+    fi
+    if [ ! -d webapi-vim/ ]; then
+        git clone https://github.com/mattn/webapi-vim.git
     fi
 }
 

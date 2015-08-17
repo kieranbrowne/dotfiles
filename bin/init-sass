@@ -7,6 +7,7 @@ sudo rm -r .git
 mv * .[^.]* ..
 cd ../
 rmdir sass-files/
+echo "@import url('styles/css/style.css')" >> style.css
 #if [ -d ".git" ]; then
 #  echo "styles/" >> .gitignore
 #  echo "!styles/css/" >> .gitignore
