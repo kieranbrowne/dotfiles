@@ -16,9 +16,10 @@ set incsearch
 nmap <leader>nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:user_emmet_leader_key='<leader>'
+"let g:user_emmet_leader_key='<leader>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 
+imap <tab> <c-y>,
 " Leader Shortcuts
 " Save file
 map <leader>s <ESC>:w<CR>
@@ -57,3 +58,4 @@ iabbr flase false
 iabbr Flase False
 
 autocmd filetype tex :277 
+
