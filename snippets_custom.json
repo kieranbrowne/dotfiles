@@ -9,6 +9,7 @@
         "@span${this}": "@include span(${this});|",
         "@bleed($)": "@include bleed($);|",
         "dib": "display: inline-block;|",
+        "db": "display: block;|",
       },
       "abbreviations": {
         "ssp" : "@include span(|);",
