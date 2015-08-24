@@ -57,3 +57,6 @@ iabbr flase false
 iabbr Flase False
 
 autocmd filetype tex :277 
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete

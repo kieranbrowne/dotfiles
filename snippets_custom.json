@@ -2,10 +2,16 @@
   "scss": {
       "extends": "css",
       "snippets": {
-        "+i": "@include |",
-        "+include": "@include |",
-        "+span($)": "@include span($);|",
-        "fs": "font-size: |;"
+        "@i": "@include |",
+        "@include": "@include |",
+        "fs": "font-size: |;",
+        "ovh": "overflow: hidden;|",
+        "@span${this}": "@include span(${this});|",
+        "@bleed($)": "@include bleed($);|",
+        "dib": "display: inline-block;|",
+      },
+      "abbreviations": {
+        "ssp" : "@include span(|);",
       }
   }
 }
