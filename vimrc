@@ -44,9 +44,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-au FileType html setl sw=2 sts=2 et
-au FileType php setl sw=2 sts=2 et
-au FileType scss setl sw=2 sts=2 et
+au FileType html setl sw=2 ts=2 et
+au FileType php setl sw=2 ts=2 et
+au FileType scss setl sw=2 ts=2 et
 
 " Linenumbers
 set number 
