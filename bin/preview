@@ -104,7 +104,7 @@ def remap(x, inMin,inMax,outMin,outMax):
         print "Range error"
         return None
     result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin
-    return result   
+    return 5 + result/1.01
 
 
 #colours

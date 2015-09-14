@@ -19,7 +19,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "let g:user_emmet_leader_key='<leader>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 
-imap <tab> <c-y>,
 " Leader Shortcuts
 " Save file
 map <leader>s <ESC>:w<CR>
@@ -41,9 +40,13 @@ ino <right> <Nop>
 ino <up> <Nop>
 
 " Set tabkey to insert 4 spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
+
+au FileType html setl sw=2 sts=2 et
+au FileType php setl sw=2 sts=2 et
+au FileType scss setl sw=2 sts=2 et
 
 " Linenumbers
 set number 
@@ -58,6 +61,11 @@ iabbr flase false
 iabbr Flase False
 
 autocmd filetype tex :277 
+
+autocmd filetype html imap <leader><leader> <c-y>,
+autocmd filetype css imap <leader><leader> <c-y>,
+autocmd filetype scss imap <leader><leader> <c-y>,
+autocmd filetype php imap <leader><leader> <c-y>,
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
