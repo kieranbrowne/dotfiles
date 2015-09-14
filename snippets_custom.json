@@ -3,16 +3,15 @@
       "extends": "css",
       "snippets": {
         "@i": "@include |",
-        "@include": "@include |",
-        "fs": "font-size: |;",
-        "ovh": "overflow: hidden;|",
-        "@span${this}": "@include span(${this});|",
-        "@bleed($)": "@include bleed($);|",
-        "dib": "display: inline-block;|",
-        "db": "display: block;|",
+        "@include":"@include |",
+        "fs": "font-size:|;",
+        "oh": "overflow:hidden;|",
+        "@span": "@include span(|);",
+        "dib": "display:inline-block;|",
+        "db": "display:block;|",
+        "fr": "float:right;|",
       },
       "abbreviations": {
-        "ssp" : "@include span(|);",
       }
   }
 }
