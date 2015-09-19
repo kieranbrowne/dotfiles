@@ -39,6 +39,9 @@ install_vim () {
     if [ ! -d webapi-vim/ ]; then
         git clone https://github.com/mattn/webapi-vim.git
     fi
+    if [ ! -d ctrlp.vim/ ]; then
+        git clone https://github.com/kien/ctrlp.vim.git
+    fi
 }
 
 install_zsh () {

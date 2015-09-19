@@ -1,12 +1,12 @@
+1 6 7
+2 5 9
+3 4 8
+
 " setup pathogen
 execute pathogen#infect()
 syntax enable
 filetype plugin indent on
 filetype plugin on
-
-" Custom coloring
-map <leader>d <ESC>:!bash ~/gnome-terminal-colors-solarized/set_dark.sh<CR><CR>
-map <leader>l <ESC>:!bash ~/gnome-terminal-colors-solarized/set_light.sh<CR><CR>
 
 " Case sensitivity for / search
 set ignorecase
@@ -18,6 +18,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 "let g:user_emmet_leader_key='<leader>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
+autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
+
+nnoremap <c-b> 0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+vnoremap <c-b> d:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+
+
+" CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_working_path_mode = 'ra'
+map <leader>/ :CtrlPLine<CR>
+map <leader>r :CtrlPMRU<CR>
 
 " Leader Shortcuts
 " Save file
@@ -25,6 +37,7 @@ map <leader>s <ESC>:w<CR>
 imap <leader>s <ESC>:w<CR>
 nmap <c-s> :w<CR>
 imap <c-s> :w<CR>a
+
 " Quit Vim
 map <leader>q <ESC>:q<CR>
 imap <leader>q <ESC>:q<CR>
@@ -40,16 +53,11 @@ ino <right> <Nop>
 ino <up> <Nop>
 
 " Set tabkey to insert 4 spaces
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-au FileType html setl sw=2 sts=2 et
-au FileType php setl sw=2 sts=2 et
-au FileType scss setl sw=2 sts=2 et
+set sw=4 ts=4 et
+au FileType html,css,scss,php setl sw=2 sts=2 et
 
 " Linenumbers
-set number 
+set relativenumber 
 
 " Stop D deleting itself in insert mode
 ino <D> <Nop>
@@ -60,12 +68,20 @@ iabbr Ture True
 iabbr flase false
 iabbr Flase False
 
-autocmd filetype tex :277 
+" shift to jump paragraphs
+nnoremap K {
+nnoremap J }
+nnoremap dK d{
+nnoremap dJ d}
+nnoremap cK c{
+nnoremap cJ c}
 
-autocmd filetype html imap <leader><leader> <c-y>,
-autocmd filetype css imap <leader><leader> <c-y>,
-autocmd filetype scss imap <leader><leader> <c-y>,
-autocmd filetype php imap <leader><leader> <c-y>,
+"shortcuts for regular but hard to reach keys
+imap jj <esc>
+nmap <space> :
+vmap <space> :
 
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+autocmd InsertEnter * :set number 
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber 
+autocmd InsertLeave * :set nonumber
