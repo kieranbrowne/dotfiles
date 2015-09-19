@@ -16,9 +16,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
 
-nnoremap <c-b> 0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
-inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
-vnoremap <c-b> d:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+nnoremap <c-b> 0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}
+inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
+vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 
 
 " CtrlP
