@@ -42,6 +42,15 @@ install_vim () {
     if [ ! -d ctrlp.vim/ ]; then
         git clone https://github.com/kien/ctrlp.vim.git
     fi
+    #colour scheme
+    if [ ! -d ../colors/ ]; then
+        mkdir ../colors/
+    fi
+    cd ../colors/
+    if [ ! -f PaperColor.vim ]; then
+        curl -O https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+    fi
+    
 }
 
 install_zsh () {

@@ -67,6 +67,8 @@ iabbr Flase False
 " shift to jump paragraphs
 nnoremap K {
 nnoremap J }
+vnoremap K {
+vnoremap J }
 nnoremap dK d{
 nnoremap dJ d}
 nnoremap cK c{
@@ -81,3 +83,13 @@ autocmd InsertEnter * :set number
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber 
 autocmd InsertLeave * :set nonumber
+
+nnoremap ci( f(lct)
+nnoremap ci[ f[lct] 
+nnoremap ci{ f{lct}
+nnoremap ci< f<lct>
+
+"colours
+set t_Co=256
+set background=light
+colorscheme PaperColor
