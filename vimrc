@@ -1,7 +1,3 @@
-1 6 7
-2 5 9
-3 4 8
-
 " setup pathogen
 execute pathogen#infect()
 syntax enable
