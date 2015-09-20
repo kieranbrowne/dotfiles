@@ -7,6 +7,7 @@ filetype plugin on
 set nocompatible
 set visualbell
 set breakindent
+set backspace=2 "make backspace work like other text editors
 "set python style regex for search
 nnoremap / /\v
 vnoremap / /\v
@@ -25,10 +26,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
+autocmd filetype html,php vmap <leader><leader> <c-y>,
 
-nnoremap <c-b> 0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}
-inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
-vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
+autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+
+
 
 
 " CtrlP
@@ -95,10 +99,10 @@ autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber 
 autocmd InsertLeave * :set nonumber
 
-nnoremap ci( f(lct)
-nnoremap ci[ f[lct] 
-nnoremap ci{ f{lct}
-nnoremap ci< f<lct>
+"nnoremap ci( f(lct)
+"nnoremap ci[ f[lct] 
+"nnoremap ci{ f{lct}
+"nnoremap ci< f<lct>
 
 "colours
 set t_Co=256
@@ -106,5 +110,8 @@ set background=light
 colorscheme PaperColor
 
 "markdown
-nmap <leader>h1 yypVr=k
-nmap <leader>h2 yypVr-k
+autocmd BufNewFile,BufRead *.md nmap <leader>h1 yypVr=k
+autocmd BufNewFile,BufRead *.md nmap <leader>h2 yypVr-k
+
+"select css section
+nmap gg ^vf{%$
