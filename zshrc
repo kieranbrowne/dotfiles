@@ -1,3 +1,4 @@
+#!/bin/zsh
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="custom"
@@ -17,6 +18,34 @@ alias gc="git commit -m"
 alias gcam="git commit -a -m"
 alias gp="git push"
 alias gpom="git push origin master"
+
+case "$(uname -s)" in
+
+    Darwin)
+        goto() {
+            if [ -d "/Applications/XAMPP/htdocs/$1/wp-content/themes/$1/" ]; then
+                cd /Applications/XAMPP/htdocs/$1/wp-content/themes/$1/
+            elif [ -d "/Applications/XAMPP/htdocs/$1/opt/lampp/htdocs/$1" ]; then
+                cd "/Applications/XAMPP/htdocs/$1"
+            fi
+        }
+        ;;
+
+    Linux)
+        goto() {
+            if [ -d "/opt/lampp/htdocs/$1/wp-content/themes/$1/" ]; then
+                cd /opt/lampp/htdocs/$1/wp-content/themes/$1/
+            elif [ -d "/opt/lampp/htdocs/$1" ]; then
+                cd "/opt/lampp/htdocs/$1"
+            fi
+        }
+        ;;
+
+    *)
+        echo "cannot distinquish operating system"
+        ;;
+esac
+#alias goto=goto
 
 CASE_SENSITIVE="false"
 

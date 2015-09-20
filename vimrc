@@ -6,6 +6,7 @@ filetype plugin on
 
 set nocompatible
 set visualbell
+set breakindent
 "set python style regex for search
 nnoremap / /\v
 vnoremap / /\v
