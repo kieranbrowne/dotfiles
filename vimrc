@@ -4,15 +4,24 @@ syntax enable
 filetype plugin indent on
 filetype plugin on
 
+set nocompatible
+set visualbell
+"set python style regex for search
+nnoremap / /\v
+vnoremap / /\v
+
 " Case sensitivity for / search
 set ignorecase
+set smartcase
 set incsearch
+set hlsearch
+
+au FocusLost * :wa
 
 " Plugin Shortcuts
 nmap <leader>nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"let g:user_emmet_leader_key='<leader>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
 
@@ -76,6 +85,7 @@ nnoremap cJ c}
 
 "shortcuts for regular but hard to reach keys
 imap jj <esc>
+cmap jj <esc>
 nmap <space> :
 vmap <space> :
 
@@ -93,3 +103,7 @@ nnoremap ci< f<lct>
 set t_Co=256
 set background=light
 colorscheme PaperColor
+
+"markdown
+nmap <leader>h1 yypVr=k
+nmap <leader>h2 yypVr-k

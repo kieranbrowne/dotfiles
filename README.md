@@ -1,4 +1,5 @@
-###Dotfiles
+Dotfiles
+========
 
 #####Features
 - auto install [zsh](http://www.zsh.org), [vim](http://www.vim.org), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [nerdTree](https://github.com/scrooloose/nerdtree), [solarized](https://github.com/altercation/solarized)
@@ -26,9 +27,6 @@
 - ```passgen``` generates random password
     - 16 characters by default
     - use argument for specific length e.g. ```passgen 8``` for 8 chars long
-- ```makeContactSheet``` creates an adobe bridge style contact sheet
-    - works for all .jpg and .png in directory
-- ```collage``` creates a square collage of images in directory 
 - ```gitnumlines``` returns the number of tracked lines of code in a repo
 
 #####Installation
