@@ -42,6 +42,9 @@ install_vim () {
     if [ ! -d ctrlp.vim/ ]; then
         git clone https://github.com/kien/ctrlp.vim.git
     fi
+    if [ ! -d vim-sandwich/ ]; then
+        git clone https://github.com/machakann/vim-sandwich.git
+    fi
     #colour scheme
     if [ ! -d ../colors/ ]; then
         mkdir ../colors/

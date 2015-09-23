@@ -32,8 +32,17 @@ autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| b
 autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
+let g:syntastic_scss_exec = 'scss-lint'
 
 " CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -79,14 +88,10 @@ iabbr flase false
 iabbr Flase False
 
 " shift to jump paragraphs
-nnoremap K {
-nnoremap J }
-vnoremap K {
-vnoremap J }
-nnoremap dK d{
-nnoremap dJ d}
-nnoremap cK c{
-nnoremap cJ c}
+nnoremap K (
+nnoremap J )
+vnoremap K (
+vnoremap J )
 
 "shortcuts for regular but hard to reach keys
 imap jj <esc>
@@ -113,5 +118,8 @@ colorscheme PaperColor
 autocmd BufNewFile,BufRead *.md nmap <leader>h1 yypVr=k
 autocmd BufNewFile,BufRead *.md nmap <leader>h2 yypVr-k
 
+autocmd BufNewFile,BufRead *.liquid set filetype=html
+autocmd BufNewFile,BufRead *scss.liquid set filetype=scss
+autocmd BufNewFile,BufRead s.scss map <leader>s :w<cr>:!cp assets/s.scss assets/style.scss.liquid<cr>
 "select css section
-nmap gg ^vf{%$
+nmap gg ^Vf{%$
