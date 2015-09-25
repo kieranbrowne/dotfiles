@@ -32,6 +32,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 autocmd filetype html,css,scss,php nmap <leader><leader> <c-y>,
+autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
 autocmd filetype html,php vmap <leader><leader> <c-y>,
 
 autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
@@ -104,7 +105,6 @@ colorscheme PaperColor
 
 autocmd BufNewFile,BufRead *.liquid set filetype=html
 autocmd BufNewFile,BufRead *scss.liquid set filetype=scss
-autocmd BufNewFile,BufRead s.scss map <leader>s :w<cr>:!cp assets/s.scss assets/style.scss.liquid<cr>
 "select css section
 nmap gg ^Vf{%$
 

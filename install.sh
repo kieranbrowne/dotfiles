@@ -45,6 +45,14 @@ install_vim () {
     if [ ! -d vim-sandwich/ ]; then
         git clone https://github.com/machakann/vim-sandwich.git
     fi
+    if [ ! -d run-on-vim/ ]; then
+        git clone https://github.com/kieranbrowne/run-on-vim.git
+    fi
+    if [ ! -d vim-commentary/ ]; then
+        git clone git://github.com/tpope/vim-commentary.git
+    fi
+
+
     #colour scheme
     if [ ! -d ../colors/ ]; then
         mkdir ../colors/
