@@ -50,6 +50,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_scss_exec = 'scss-lint'
+autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
 
 " CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip

@@ -10,6 +10,8 @@
         "dib": "display:inline-block;|",
         "db": "display:block;|",
         "fr": "float:right;|",
+        "bgc": "background-color:|;",
+        "background-color": "background-color:|;"
       },
       "abbreviations": {
       }
