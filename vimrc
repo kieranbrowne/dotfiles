@@ -52,7 +52,14 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_scss_exec = 'scss-lint'
 autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
 
-" CtrlP
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="J"
+let g:UltiSnipsJumpBackwardTrigger="K"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/dotfiles/UltiSnips']
+
+"CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <c-p> <nop>

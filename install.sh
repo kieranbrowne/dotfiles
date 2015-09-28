@@ -51,6 +51,12 @@ install_vim () {
     if [ ! -d vim-commentary/ ]; then
         git clone git://github.com/tpope/vim-commentary.git
     fi
+    if [ ! -d syntastic/ ]; then
+        git clone https://github.com/scrooloose/syntastic.git
+    fi
+    if [ ! -d ultisnips/ ]; then
+        git clone https://github.com/SirVer/ultisnips.git
+    fi
 
 
     #colour scheme
