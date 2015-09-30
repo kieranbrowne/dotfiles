@@ -1,0 +1,94 @@
+#!/usr/bin/env python
+
+''' requirements:
+    xdotool
+    gimp
+'''
+
+import sys
+import fileinput
+#import subprocess
+
+command = '''
+xdotool search "titled" windowactivate --sync mousemove --window %1 0 0 
+sleep 0.1
+xdotool mousedown 1
+sleep 0.1
+xdotool mousemove_relative --sync 200 200
+sleep 0.1
+xdotool mousemove --sync 340 240 
+sleep 0.1
+xdotool mouseup 1
+'''
+#process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+#output = subprocess.communicate()[0]
+
+def getData(lines):
+    data = []
+    try:
+        for line in lines:
+            x,y,d = process(line)
+            data.append((x,y,d))
+    except:
+        print "file does not contain the approriate data"
+    return data
+
+def process(line):
+    x,y,d = 0,0,0
+    try:
+        coords = line.split(' ')
+        x = float( coords[0] )
+        y = float( coords[1] )
+        d = int  ( coords[2] )
+    except:
+        print "Error"
+    return x,y,d
+
+def xCommands(data):
+
+    def xMove(line): # x y draw -> "xdotool mousemove --sync x y"
+        x = str(remap(line[0],minX,minX+scale,0,1600))
+        y = str(remap(line[1],minY,minY+scale,0,900))
+        return 'xdotool mousemove --sync '+ x +' '+y
+
+    commands = []
+    z = zip(*data)
+    scale = max(max(z[0])-min(z[0]),max(z[1])-min(z[1]))
+    minX = min(z[0])
+    minY = min(z[1])
+    del z
+
+    commands.append('xdotool search "titled" windowactivate --sync mousemove --window %1 0 0 ')
+    commands.append('xdotool key p') # switch to paint brush tool
+    commands.append('xdotool mousedown 1')
+    for line in data:
+        if line[2] != 0:
+            commands.append(xMove(line))
+
+        else:
+            commands.append('xdotool mouseup 1')
+            commands.append(xMove(line))
+            commands.append('xdotool mousedown 1')
+
+    commands.append('xdotool mouseup 1')
+    return commands
+
+
+    
+        
+def remap(x, inMin,inMax,outMin,outMax):
+    #range check
+    if inMin == inMax or outMin == outMax:
+        print "Range error"
+        return None
+    result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin
+    return (30 + result/1.01)
+
+
+# --- MAIN --- #
+
+if len(sys.argv) > 1:
+    instructions = getData(fileinput.input(sys.argv[1]))
+    print '\nsleep 0\n'.join(xCommands(instructions));
+else:
+    print "xdodraw requires input"
