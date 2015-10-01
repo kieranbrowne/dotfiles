@@ -68,8 +68,8 @@ nmap <leader>/ :CtrlPLine<CR>
 nmap <leader>r :CtrlPMRU<CR>
 
 " Leader Shortcuts
-nmap <leader>w <ESC>:w<CR>
-nmap <leader>q <ESC>:q<CR>
+map <leader>w <ESC>:w<CR>
+map <leader>q <ESC>:q<CR>
 
 " Unmap the arrow keys
 no <left> <<
@@ -94,7 +94,7 @@ nnoremap J )
 vnoremap K (
 vnoremap J )
 
-imapclear
+"imapclear
 "shortcuts for regular but hard to reach keys
 imap jj <esc>
 cmap jj <esc>
