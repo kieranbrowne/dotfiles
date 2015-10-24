@@ -57,6 +57,15 @@ install_vim () {
     if [ ! -d ultisnips/ ]; then
         git clone https://github.com/SirVer/ultisnips.git
     fi
+    if [ ! -d vim-multiple-cursors/ ]; then
+        git clone https://github.com/terryma/vim-multiple-cursors
+    fi
+    if [ ! -d tabular/ ]; then
+        git clone git://github.com/godlygeek/tabular.git
+    fi
+    if [ ! -d targets/ ]; then
+        git clone https://github.com/wellle/targets.vim
+    fi
 
 
     #colour scheme
