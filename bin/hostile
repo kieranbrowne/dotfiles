@@ -52,7 +52,7 @@ def process(line):
 def xCommands(data):
 
     def xMove(line): # x y draw -> "xdotool mousemove --sync x y"
-        x = str(remap(line[0],minX,minX+scale,0,1600))
+        x = str(remap(line[0],minX,minX+scale,0,900))
         y = str(remap(line[1],minY,minY+scale,0,900))
         if tool == 'xdotool':
             return 'mousemove --sync '+ x +' '+y

@@ -16,7 +16,7 @@ alias gd="git diff"
 alias ga="git add"
 alias gc="git commit -m"
 alias gcam="git commit -a -m"
-alias gp="git push"
+alias gp="git pull"
 alias gpom="git push origin master"
 
 case "$(uname -s)" in
@@ -45,7 +45,15 @@ case "$(uname -s)" in
         echo "cannot distinquish operating system"
         ;;
 esac
-#alias goto=goto
+
+# kill all detached screens
+killscreens () {
+    screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
+}
+
+nrepl () {
+    screen -d -m lein repl :headless :port $1
+}
 
 CASE_SENSITIVE="false"
 
