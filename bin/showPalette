@@ -3,6 +3,7 @@ import sys
 import re
 import pygame
 import pygame.gfxdraw
+import fileinput
 
 
 
@@ -13,12 +14,15 @@ screen = pygame.display.set_mode(size,pygame.NOFRAME)
 screen.fill((255,255,255))
 
 def readPalette(str):
-    palette = []
-    for colour in str.split(','):
-        haskellColour = re.search('RGB (\d*) (\d*) (\d*)',colour)
-        v = haskellColour
-        colour = (int(v.group(1)),int(v.group(2)),int(v.group(3)))
-        palette.append(colour)
+    try: # haskell Knife syntax
+        hask = re.compile(r"RGB (\d*) (\d*) (\d*)")
+        palette = map(lambda (r,g,b):(int(r),int(g),int(b)),hask.findall(str))
+        palette[0] # will throw exception if palette empty
+    except: # css syntax
+        sass = re.compile(r"rgb\((\d*),(\d*),(\d*)\)")
+        print sass.findall(str)
+        palette = map(lambda (r,g,b):(int(r),int(g),int(b)),sass.findall(str))
+
     return palette
         
 
@@ -37,12 +41,15 @@ def drawPalette(palette):
 
     pygame.display.flip()
 
-for line in sys.stdin:
+try:
+    for line in fileinput.input():
+        drawPalette(readPalette(line))
+except:
+    line = ' '.join(sys.argv[1:])
     drawPalette(readPalette(line))
-    # sys.stdout.write(line)
 
 running = True
 while running:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
             running = False
