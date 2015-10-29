@@ -31,26 +31,14 @@ nmap <leader>nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
-autocmd filetype html,css,scss,php nmap <leader><leader> <c-y>,
-autocmd filetype html,css,scss,php imap <leader><leader> <c-y>,
+autocmd filetype html,css,scss,less,php nmap <leader><leader> <c-y>,
+autocmd filetype html,css,scss,less,php imap <leader><leader> <c-y>,
 autocmd filetype html,php vmap <leader><leader> <c-y>,
 
 autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
 autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_scss_exec = 'scss-lint'
-autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -80,6 +68,8 @@ ino <down> <Nop>
 ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
+vno <left> <
+vno <right> >
 
 " Set tabkey to insert 4 spaces
 set sw=4 ts=4 et
