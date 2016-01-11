@@ -79,10 +79,10 @@ au FileType html,css,scss,php setl sw=2 sts=2 et
 ino <D> <Nop>
 
 " shift to jump paragraphs
-nnoremap K (
-nnoremap J )
-vnoremap K (
-vnoremap J )
+" nnoremap K (
+" nnoremap J )
+" vnoremap K (
+" vnoremap J )
 
 "imapclear
 "shortcuts for regular but hard to reach keys
