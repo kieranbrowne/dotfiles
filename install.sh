@@ -111,7 +111,9 @@ install_vim
 ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
 # symlink the gimprc
 rm ~/.gimp-2.8/gimprc
-ln -s $dir/gimprc ~/.gimp-2.8/gimprc
+ln -s $dir/gimp/gimprc ~/.gimp-2.8/gimprc
+
+ln -s $dir/gimp/plug-ins/* ~/.gimp-2.8/plug-ins/
 # symlink the bin folder
 cd ~
 ln -s $dir/bin
