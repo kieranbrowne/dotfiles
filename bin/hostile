@@ -10,6 +10,16 @@ def canvas():
     screen = gui.screenshot()
     return [(0,0),(0,0)]
 
+def gimpTool(name):
+    if name == 'brush':
+        gui.typewrite('p')
+    if name == 'smudge':
+        gui.typewrite('s')
+
+def setCol(r,g,b):
+
+
+
 def clickOn(toolName):
     '''click on subsection of screen'''
     try:

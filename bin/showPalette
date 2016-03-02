@@ -9,7 +9,7 @@ import fileinput
 
 pygame.init()
 
-size = [300,200]
+size = [600,300]
 screen = pygame.display.set_mode(size,pygame.NOFRAME)
 screen.fill((255,255,255))
 
@@ -20,7 +20,6 @@ def readPalette(str):
         palette[0] # will throw exception if palette empty
     except: # css syntax
         sass = re.compile(r"rgb\((\d*),(\d*),(\d*)\)")
-        print sass.findall(str)
         palette = map(lambda (r,g,b):(int(r),int(g),int(b)),sass.findall(str))
 
     return palette
@@ -34,19 +33,21 @@ def drawPalette(palette):
         y = size[1]/2
         x = size[0]/(len(palette)+1) * (palette.index(col)+1)
         try:
-            pygame.gfxdraw.aacircle(screen, x,y, 30, col)
-            pygame.gfxdraw.filled_circle(screen, x,y, 30, col)
+            pygame.gfxdraw.aacircle(screen, x,y, 40, col)
+            pygame.gfxdraw.filled_circle(screen, x,y, 40, col)
         except:
-            pygame.draw.circle(screen, col,[x,y],30,0)
+            pygame.draw.circle(screen, col,[x,y],40,0)
 
     pygame.display.flip()
 
 try:
     for line in fileinput.input():
         drawPalette(readPalette(line))
+        print fileinput.input()
 except:
     line = ' '.join(sys.argv[1:])
     drawPalette(readPalette(line))
+    print line
 
 running = True
 while running:
