@@ -19,13 +19,15 @@ alias gcam="git commit -a -m"
 alias gp="git pull"
 alias gpom="git push origin master"
 
+alias gotovol=". vol"
+
 case "$(uname -s)" in
 
     Darwin)
         goto() {
             if [ -d "/Applications/XAMPP/htdocs/$1/wp-content/themes/$1/" ]; then
-                cd /Applications/XAMPP/htdocs/$1/wp-content/themes/$1/
-            elif [ -d "/Applications/XAMPP/htdocs/$1/opt/lampp/htdocs/$1" ]; then
+                cd "/Applications/XAMPP/htdocs/$1/wp-content/themes/$1/"
+            elif [ -d "/Applications/XAMPP/htdocs/$1" ]; then
                 cd "/Applications/XAMPP/htdocs/$1"
             fi
         }
@@ -45,6 +47,7 @@ case "$(uname -s)" in
         echo "cannot distinquish operating system"
         ;;
 esac
+
 
 # kill all detached screens
 killscreens () {
@@ -70,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/opt/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.cabal/bin
 
@@ -91,3 +94,9 @@ fi
 # Haskell stuff
 export CABAL_HOME=$HOME/.cabal
 export PATH=$CABAL_HOME/bin:$PATH
+
+# set up callable history
+HISTSIZE=5000
+HISTFILESIZE=10000
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

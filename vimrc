@@ -106,4 +106,5 @@ autocmd BufNewFile,BufRead *scss.liquid set filetype=scss
 "select css section
 nmap gg ^Vf{%$
 
+nnoremap Y y$ 
 :nnoremap <leader>c 0v$:<c-u>call RunOn(visualmode(),"cowsay")<cr>

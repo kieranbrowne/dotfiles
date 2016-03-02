@@ -4,14 +4,23 @@
       "snippets": {
         "@i": "@include |",
         "@include":"@include |",
-        "fs": "font-size:|;",
-        "oh": "overflow:hidden;|",
+        "fs": "font-size: |;",
+        "oh": "overflow: hidden;|",
         "@span": "@include span(|);",
-        "dib": "display:inline-block;|",
-        "db": "display:block;|",
-        "fr": "float:right;|",
-        "bgc": "background-color:|;",
+        "dib": "display: inline-block;|",
+        "db": "display: block;|",
+        "fr": "float: right;|",
+        "bgc": "background-color: |;",
         "background-color": "background-color:|;"
+      },
+      "abbreviations": {
+      }
+  },
+  "less": {
+      "snippets": {
+        "oh": "overflow: hidden;|",
+        "dib": "display: inline-block;|",
+        "db": "display: block;|"
       },
       "abbreviations": {
       }
