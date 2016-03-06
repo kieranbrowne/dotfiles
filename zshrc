@@ -91,3 +91,6 @@ fi
 # Haskell stuff
 export CABAL_HOME=$HOME/.cabal
 export PATH=$CABAL_HOME/bin:$PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
