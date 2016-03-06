@@ -9,6 +9,7 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias c="clear"
 alias l="ls"
+alias vi="vim"
 
 #git
 alias gs="git status"
