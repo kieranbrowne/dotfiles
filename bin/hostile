@@ -16,7 +16,7 @@ def gimpTool(name):
     if name == 'smudge':
         gui.typewrite('s')
 
-def setCol(r,g,b):
+# def setCol(r,g,b):
 
 
 
@@ -74,11 +74,13 @@ def xCommands(data):
             return 'kp:' + key
 
     def scaledX(line):
-        return remap(line[0],minX,minX+scale,0,gui.size()[0])
+        return remap(line[0],minX,minX+scale,1600/2 -300,1600/2 +280)
+        # return remap(line[0],minX,minX+scale,0,gui.size()[0])
 
 
     def scaledY(line):
-        return remap(line[1],minY,minY+scale,0,gui.size()[1])
+        return remap(line[1],minY,minY+scale,900/2 - 300,900/2 + 280)
+        # return remap(line[1],minY,minY+scale,0,gui.size()[1])
 
     z = zip(*data)
     scale = max(max(z[0])-min(z[0]),max(z[1])-min(z[1]))
@@ -88,10 +90,14 @@ def xCommands(data):
 
     gui.typewrite('b')
     for line in data:
-        if line[2] != 0:
-            gui.dragTo(scaledX(line),scaledY(line),button='left')
-        else:
-            gui.moveTo(scaledX(line),scaledY(line))
+        if line[2] == 0 or data.index(line) % 4 == 0:
+            if line[2] != 0:
+                gui.moveTo(scaledX(line),scaledY(line))
+                # gui.dragTo(scaledX(line),scaledY(line),button='left')
+            else:
+                gui.mouseUp();
+                gui.moveTo(scaledX(line),scaledY(line))
+                gui.mouseDown();
 
 def remap(x, inMin,inMax,outMin,outMax):
     #range check

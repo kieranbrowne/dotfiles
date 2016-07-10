@@ -107,3 +107,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# added by Anaconda2 4.0.0 installer
+export PATH="/home/kieran/anaconda2/bin:$PATH"

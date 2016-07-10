@@ -22,6 +22,10 @@ alias gpom="git push origin master"
 
 alias gotovol=". vol"
 
+#openFrameworks
+alias mr="make run"
+alias mmr="make && make run"
+
 case "$(uname -s)" in
 
     Darwin)
@@ -77,6 +81,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/opt/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:/home/kieran/anaconda2/bin
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -104,3 +109,6 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 #shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+export NVM_DIR="/home/kieran/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
