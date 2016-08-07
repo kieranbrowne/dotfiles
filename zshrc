@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="custom"
-eval `dircolors ~/.dircolors`
+# eval `dircolors ~/.dircolors`
 
 # Aliases
 alias zshrc="vim ~/.zshrc"
@@ -104,11 +104,23 @@ export PATH=$CABAL_HOME/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+### Short term: add marker.py for comp1720 marking
+export PATH="/users/kieran/comp-1720-2016/marker:$PATH"
+
+# added by Miniconda2 4.1.11 installer
+export PATH="/Users/kieran/miniconda2/bin:$PATH"
+
+# Node Version Manager
+plugins+=(zsh-nvm)
+
 # set up callable history
 HISTSIZE=5000
 HISTFILESIZE=10000
 #shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-export NVM_DIR="/home/kieran/.nvm"
+# export NVM_DIR="/home/kieran/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="/users/kieran/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm use --delete-prefix v6.3.1 --silent
