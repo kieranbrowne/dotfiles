@@ -23,3 +23,4 @@ fi
 
 export GHC_HOME=$HOME/Development/bin/ghc  
 export PATH=$GHC_HOME/bin:${PATH}
+

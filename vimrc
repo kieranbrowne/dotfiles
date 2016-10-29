@@ -3,6 +3,11 @@ let mapleader=';'
 nmap <space> :
 vmap <space> :
 
+" spacemacs style
+nmap <space>ff /
+nmap <space>bs :tabnew
+
+nmap <space>fs :w
 " Package Manager
 execute pathogen#infect()
 
@@ -55,10 +60,6 @@ nmap <leader>p :CtrlP<CR>
 nmap <leader>/ :CtrlPLine<CR>
 nmap <leader>r :CtrlPMRU<CR>
 
-" Leader Shortcuts
-map <leader>w <ESC>:w<CR>
-map <leader>q <ESC>:q<CR>
-
 " Unmap the arrow keys
 no <left> <<
 no <right> >>
@@ -73,16 +74,13 @@ vno <right> >
 
 " Set tabkey to insert 4 spaces
 set sw=4 ts=4 et
-au FileType html,css,scss,php setl sw=2 sts=2 et
+au FileType html,css,scss,less,php setl sw=2 sts=2 et
 
 " Stop D deleting itself in insert mode
 ino <D> <Nop>
 
-" shift to jump paragraphs
-" nnoremap K (
-" nnoremap J )
-" vnoremap K (
-" vnoremap J )
+nnoremap K <nop>
+nnoremap U u 
 
 "imapclear
 "shortcuts for regular but hard to reach keys
@@ -101,10 +99,7 @@ set t_Co=256
 "set background=light
 colorscheme PaperColor
 
-autocmd BufNewFile,BufRead *.liquid set filetype=html
-autocmd BufNewFile,BufRead *scss.liquid set filetype=scss
-"select css section
-nmap gg ^Vf{%$
-
 nnoremap Y y$ 
-:nnoremap <leader>c 0v$:<c-u>call RunOn(visualmode(),"cowsay")<cr>
+
+" continue good trajectory
+imap ;; <c-x><c-n>

@@ -5,6 +5,10 @@ ZSH_THEME="custom"
 # eval `dircolors ~/.dircolors`
 
 # Aliases
+## The most important one
+alias vim='/Users/kieran/vim/src/vim'
+
+
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias c="clear"
@@ -25,6 +29,13 @@ alias gotovol=". vol"
 #openFrameworks
 alias mr="make run"
 alias mmr="make && make run"
+
+# Clojure
+alias startrepl="screen -dmS clojure_repl lein repl"
+alias sr="screen -dmS clojure_repl lein repl"
+alias viewrepl="screen -R clojure_repl"
+alias vr="screen -R clojure_repl"
+
 
 case "$(uname -s)" in
 
@@ -111,7 +122,7 @@ export PATH="/users/kieran/comp-1720-2016/marker:$PATH"
 export PATH="/Users/kieran/miniconda2/bin:$PATH"
 
 # Node Version Manager
-plugins+=(zsh-nvm)
+# plugins+=(zsh-nvm)
 
 # set up callable history
 HISTSIZE=5000
@@ -121,6 +132,6 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # export NVM_DIR="/home/kieran/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export NVM_DIR="/users/kieran/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm use --delete-prefix v6.3.1 --silent
+# export NVM_DIR="/users/kieran/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# nvm use --delete-prefix v6.3.1 --silent
