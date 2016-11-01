@@ -3,3 +3,5 @@ oh-my-zsh/
 # Scripts that arent mine but are good to store in ~/bin
 bin/lein
 bin/ngrok
+system/.custom
+bin/subl

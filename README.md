@@ -1,38 +1,29 @@
-Dotfiles
-========
+# .dotfiles
 
-#####Features
-- auto install [zsh](http://www.zsh.org), [vim](http://www.vim.org), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), [nerdTree](https://github.com/scrooloose/nerdtree), [solarized](https://github.com/altercation/solarized)
+## Installation
 
-#####zshrc
-- clean, minimal theme
+### Local machines
 
-#####vimrc
-- arrowkeys organise code
-    - up + down reorder lines
-    - left + right indent 
-- ```tab``` inserts 4 spaces
-- leader shortcuts
-    - ```\s``` save
-    - ```\q``` quit
-    - ```\nt``` open NERDTREE
-    - ```\l``` set solarized light theme
-    - ```\d``` set solarized dark theme
-
-#####bin/
-- ```runbackup``` one command compresses and encrypts important folders
-    - easy to edit for own folders
-- ```netspeed``` tests real download speeds
-- ```ipsearch``` lists devices connected to local network
-- ```passgen``` generates random password
-    - 16 characters by default
-    - use argument for specific length e.g. ```passgen 8``` for 8 chars long
-- ```gitnumlines``` returns the number of tracked lines of code in a repo
-
-#####Installation
 ```
-git clone https://github.com/kieranbrowne/dotfiles ~/dotfiles
-bash ~/dotfiles/install.sh
+git clone git@github.com:kierantbrowne/dotfiles.git
+source dotfiles/install.sh
 ```
-#####Acknowledgements
-Installation script based on `makesymlinks.sh` by [Michael J. Smalley](https://github.com/michaeljsmalley/dotfiles)
+
+### Remotely install using curl
+
+Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
+```
+sh -c "`curl -fsSL https://raw.github.com/kierantbrowne/dotfiles/master/remote-install.sh`"
+```
+
+Or, using wget:
+```
+sh -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/kierantbrowne/dotfiles/master/remote-install.sh`"
+```
+
+## Credit where credit is due
+
+I've taken as many
+Check out the great work of 
+[@webpro](https://github.com/webpro/dotfiles)
+[@benswift](https://github.com/benswift/.dotfiles)

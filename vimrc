@@ -1,66 +1,25 @@
-let mapleader=';'
-" The secret sauce
-nmap <space> :
-vmap <space> :
+" Generic
 
-" spacemacs style
-nmap <space>ff /
-nmap <space>bs :tabnew
-
-nmap <space>fs :w
-" Package Manager
-execute pathogen#infect()
-
-syntax enable
-filetype plugin indent on
-filetype plugin on
+set relativenumber 
 set nocompatible
 set visualbell
 set breakindent 
 set backspace=2 "make backspace work like other text editors
-
-"set python style regex for search
-nnoremap / /\v
-vnoremap / /\v
-
-" Case sensitivity for / search
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-
+filetype plugin indent on
+filetype plugin on
+nnoremap Y y$ 
+set autoread
+set hidden
+set pastetoggle=<F2>
 au FocusLost * :wa
 
-" Plugin Shortcuts
-nmap <leader>nt :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Key mappings
 
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
-autocmd filetype html,css,scss,less,php nmap <leader><leader> <c-y>,
-autocmd filetype html,css,scss,less,php imap <leader><leader> <c-y>,
-autocmd filetype html,php vmap <leader><leader> <c-y>,
-
-autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
-autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
-autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
-
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="J"
-let g:UltiSnipsJumpBackwardTrigger="K"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/dotfiles/UltiSnips']
-
-"CtrlP
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_working_path_mode = 'ra'
-nnoremap <c-p> <nop>
-nmap <leader>p :CtrlP<CR>
-nmap <leader>/ :CtrlPLine<CR>
-nmap <leader>r :CtrlPMRU<CR>
-
-" Unmap the arrow keys
+let mapleader=';'
+nmap <space> :
+vmap <space> :
+imap jj <esc>
+cmap jj <esc>
 no <left> <<
 no <right> >>
 no <up> ddkP
@@ -71,35 +30,63 @@ ino <right> <Nop>
 ino <up> <Nop>
 vno <left> <
 vno <right> >
-
-" Set tabkey to insert 4 spaces
-set sw=4 ts=4 et
-au FileType html,css,scss,less,php setl sw=2 sts=2 et
-
-" Stop D deleting itself in insert mode
 ino <D> <Nop>
-
 nnoremap K <nop>
 nnoremap U u 
 
-"imapclear
-"shortcuts for regular but hard to reach keys
-imap jj <esc>
-cmap jj <esc>
+" SPACEMACS
 
+nmap <space>ff <c-P>
+nmap <space>bs :tabnew
+nmap <space>fs :w
 
-set relativenumber 
-autocmd InsertEnter * :set number 
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber 
-autocmd InsertLeave * :set nonumber
+" Load plugins
 
-"colours
+silent! call pathogen#infect()
+
+" Colours
+
+syntax enable
+set cursorline
 set t_Co=256
-"set background=light
 colorscheme PaperColor
 
-nnoremap Y y$ 
+" Indentation
+
+set sw=4 ts=4 et
+au FileType html,css,scss,less,php setl sw=2 sts=2 et
+
+" Search
+
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+" Plugin Shortcuts
+
+nmap <leader>nt :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+autocmd filetype html,css,scss,less,php nmap <leader><leader> <c-y>,
+autocmd filetype html,css,scss,less,php imap <leader><leader> <c-y>,
+autocmd filetype html,php vmap <leader><leader> <c-y>,
+
+autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>{dd}i
+autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
+
+"CtrlP
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_working_path_mode = 'ra'
+nnoremap <c-p> <nop>
+nmap <leader>p :CtrlP<CR>
+nmap <leader>/ :CtrlPLine<CR>
+nmap <leader>r :CtrlPMRU<CR>
 
 " continue good trajectory
+
 imap ;; <c-x><c-n>

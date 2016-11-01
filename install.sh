@@ -1,126 +1,42 @@
-############################
-# install.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
+#!/usr/bin/env bash
 
-########## Variables
+# Get current dir (so run this script from anywhere)
 
-dir=~/dotfiles # dotfiles directory
-olddir=~/dotfiles_old # old dotfiles backup directory
-files="bashrc vimrc zshrc profile oh-my-zsh ghci snippets_custom.json" # list of files/folders to symlink in homedir
+export DOTFILES_DIR EXTRA_DIR
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+EXTRA_DIR="$HOME/.extra"
 
-##########
+# Update dotfiles itself first
 
-# create dotfiles_old in homedir
-mkdir -p $olddir
+[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
-# change to the dotfiles directory
-cd $dir
+# Bunch of symlinks
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
-    mv ~/.$file ~/dotfiles_old/
-    ln -s $dir/$file ~/.$file
-done
+ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
+ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
+ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-#sudo apt-get install curl
+# Package managers & packages
 
-install_vim () {
-    #sudo apt-get install vim 
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    cd ~/.vim/bundle
-    if [ ! -d nerdtree/ ]; then
-        git clone https://github.com/scrooloose/nerdtree.git
-    fi
-    if [ ! -d emmet-vim/ ]; then
-        git clone https://github.com/mattn/emmet-vim.git
-    fi
-    if [ ! -d webapi-vim/ ]; then
-        git clone https://github.com/mattn/webapi-vim.git
-    fi
-    if [ ! -d ctrlp.vim/ ]; then
-        git clone https://github.com/kien/ctrlp.vim.git
-    fi
-    if [ ! -d vim-sandwich/ ]; then
-        git clone https://github.com/machakann/vim-sandwich.git
-    fi
-    if [ ! -d run-on-vim/ ]; then
-        git clone https://github.com/kieranbrowne/run-on-vim.git
-    fi
-    if [ ! -d vim-commentary/ ]; then
-        git clone git://github.com/tpope/vim-commentary.git
-    fi
-    if [ ! -d syntastic/ ]; then
-        git clone https://github.com/scrooloose/syntastic.git
-    fi
-    if [ ! -d ultisnips/ ]; then
-        git clone https://github.com/SirVer/ultisnips.git
-    fi
-    if [ ! -d vim-multiple-cursors/ ]; then
-        git clone https://github.com/terryma/vim-multiple-cursors
-    fi
-    if [ ! -d tabular/ ]; then
-        git clone git://github.com/godlygeek/tabular.git
-    fi
-    if [ ! -d targets/ ]; then
-        git clone https://github.com/wellle/targets.vim
-    fi
+. "$DOTFILES_DIR/install/brew.sh"
+. "$DOTFILES_DIR/install/bash.sh"
+. "$DOTFILES_DIR/install/npm.sh"
+. "$DOTFILES_DIR/install/pip.sh"
 
-
-    #colour scheme
-    if [ ! -d ../colors/ ]; then
-        mkdir ../colors/
-    fi
-    cd ../colors/
-    if [ ! -f PaperColor.vim ]; then
-        curl -O https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
-    fi
-    
-}
-
-install_zsh () {
-# Test to see if zshell is installed. If it is:
-    if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-        # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-        if [ ! -d $dir/oh-my-zsh/ ]; then
-            git clone http://github.com/michaeljsmalley/oh-my-zsh.git
-        fi
-        # Set the default shell to zsh if it isn't currently set to zsh
-        if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-            chsh -s $(which zsh)
-        fi
-        else
-        # If zsh isn't installed, get the platform of the current machine
-        platform=$(uname);
-        # If the platform is Linux, try an apt-get to install zsh and then recurse
-        if [[ $platform == 'Linux' ]]; then
-            sudo apt-get install zsh
-            install_zsh
-        # If the platform is OS X, tell the user to install zsh :)
-        elif [[ $platform == 'Darwin' ]]; then
-            echo "Please install zsh, then re-run this script!"
-            exit
-        fi
-    fi
-}
-
-install_zsh
-install_vim
-# link custom theme into the themes folder
-ln -s $dir/custom.zsh-theme ~/.oh-my-zsh/themes/custom.zsh-theme
-# symlink the gimprc
-rm ~/.gimp-2.8/gimprc
-ln -s $dir/gimp/gimprc ~/.gimp-2.8/gimprc
-
-ln -s $dir/gimp/plug-ins/* ~/.gimp-2.8/plug-ins/
-# symlink the bin folder
-cd ~
-ln -s $dir/bin
-# set solarized colorscheme
-cd ~
-wget -q --no-check-certificate -O .dircolors https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
-if [ ! -d ~/gnome-terminal-colors-solarized/ ]; then
-    git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+if [ "$(uname)" == "Darwin" ]; then
+  . "$DOTFILES_DIR/install/brew-cask.sh"
+  . "$DOTFILES_DIR/install/gem.sh"
+  ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
 fi
-./gnome-terminal-colors-solarized/set_dark.sh
+
+# Run tests
+
+bats test/*.bats
+
+# Install extra stuff
+
+if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
+  . "$EXTRA_DIR/install.sh"
+fi
