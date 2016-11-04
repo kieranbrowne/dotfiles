@@ -3,7 +3,7 @@
 set relativenumber 
 set nocompatible
 set visualbell
-set breakindent 
+silent! set breakindent 
 set backspace=2 "make backspace work like other text editors
 filetype plugin indent on
 filetype plugin on
