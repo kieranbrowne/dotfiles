@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import pyautogui as gui
+
+# screenWidth, screenHeight = gui.size()
+# currentMouseX, currentMouseY = gui.position()
+# gui.moveTo(100,150, duration=2, tween=gui.tweens.easeInOutQuad)
+# gui.doubleClick()
+# gui.typewrite('Winnah')
+# gui.press('esc')
+# gui.keyDown('shift')
+# gui.typewrite(['left','left','left','left','left'])
+# gui.keyUp('shift')
+# gui.hotkey('ctrl','c')
+
+# prompts!
+# gui.password('Enter password')
+# gui.confirm('shall i proceed?')
+# gui.prompt('what is your name?')
+
+# locate images on screen!
+# brushLocation = gui.locateOnScreen('brush.png')
+# brushX, brushY = gui.center(brushLocation)
+# brushX, brushY = gui.locateCenterOnScreen('brush.png')
+
+# -- MAIN --#
+# doubleClickOn('doc')
+
+# time.sleep(.01)
+# gui.hotkey('ctrl','n')
+# time.sleep(.01)
+# gui.hotkey('ctrl','a')
+# gui.typewrite('400')
+# time.sleep(.01)
+# gui.press('tab')
+# time.sleep(.01)
+# gui.typewrite('500')
+# time.sleep(.01)
+# gui.press('enter')
+

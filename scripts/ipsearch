@@ -1,0 +1,14 @@
+#!/bin/bash
+# this script echos the devices currently connected to the local network.
+clear
+line='...................................................'
+for i in 192.168.1.{1..255}
+do
+	if ping -c1 -w1 $i  &>/dev/null
+	then 
+        n=`nslookup $i | grep name`
+		n=${n:0:-1}
+        printf "%s %s $i\n" $n "${line:${#n}}"
+        echo $n
+	fi
+done

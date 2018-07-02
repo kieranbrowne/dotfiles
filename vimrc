@@ -1,5 +1,5 @@
 " Generic
-
+autocmd BufNewFile,BufRead *.clj nnoremap gcc I;;<space><esc>
 set relativenumber 
 set nocompatible
 set visualbell
@@ -37,11 +37,20 @@ nnoremap U u
 " SPACEMACS
 
 nmap <space>ff <c-P>
-nmap <space>bs :tabnew
-nmap <space>fs :w
+nmap <space>fs :w<cr>
+nmap <space>bs :tabnew<cr>
+nmap <space>bd :bd<cr>
+nmap <space>bd :buffers<cr>
+nmap <space>bn :bn<cr>
+nmap <space>bp :bp<cr>
+nmap <space>fg :vimgrep
+nmap ,ef cpp
+
+" slurp
+nmap <space>ks hf)xep<space><esc>
+nmap <space>kb ht)diwpF<space>xph
 
 " Load plugins
-
 silent! call pathogen#infect()
 
 " Colours
@@ -78,6 +87,8 @@ autocmd BufNewFile,BufRead *.js inoremap <c-b> <esc>0d$:read! echo '<c-r>"' \| b
 autocmd BufNewFile,BufRead *.js vnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 autocmd BufNewFile,BufRead *.js nnoremap <c-b> dk:read! echo '<c-r>"' \| babel --blacklist useStrict <cr>
 
+
+
 "CtrlP
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -89,4 +100,8 @@ nmap <leader>r :CtrlPMRU<CR>
 
 " continue good trajectory
 
-imap ;; <c-x><c-n>
+" imap ;; <c-x><c-n>
+
+" blockwise select select
+nmap <space>ff vaBV
+vmap <space>ff vaBV

@@ -1,0 +1,21 @@
+# Get latest version
+brew update && brew upgrade
+
+# my packages
+brew install ffmpeg
+brew install flac
+brew install git
+brew install pandoc
+brew install nvm
+brew install postgresql
+
+# emacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
+cd ~
+mv .emacs.d .emacs.d.bak
+mv .emacs .emacs.bak
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+brew tap caskroom/fonts
+brew cask install font-source-code-pro

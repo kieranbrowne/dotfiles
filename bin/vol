@@ -1,9 +1,0 @@
-#!/bin/bash 
-dest="/Volumes/`ls -1 /Volumes/ | grep -v Macintosh`" 
-ndest="$(echo $dest | sed 's/ /\\ /g')"
-echo "$(echo $dest | sed 's/ /\\ /g')"
-echo "${ndest}"
-cd "$ndest/public_html/wp-content/themes/"
-nndest="$(ls -d1 */ | grep -v ed | grep -v twenty)"
-cd "$nndest"
-

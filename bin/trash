@@ -1,6 +1,0 @@
-#!/bin/bash
-# I recommend installing trash-cli for use with this system,
-# the script will work without however the files must be manually restored
-# if trash-put returns "command not found"
-mv $1 ~/.local/share/Trash/files/
-#else use trash-put

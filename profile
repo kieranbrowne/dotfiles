@@ -1,26 +1,52 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# my scripts
+PATH="$HOME/bin:$PATH"
+# latex
+export PATH=/usr/local/texlive/2018basic/bin/x86_64-darwin/:$PATH
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+# setup callable history
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+HISTSIZE=5000
+HISTFILESIZE=10000
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+# update the values of LINES and COLUMNS after each command
+shopt -s checkwinsize
 
-export GHC_HOME=$HOME/Development/bin/ghc  
-export PATH=$GHC_HOME/bin:${PATH}
+# "**" matches all files in zero or more directories.
+shopt -s globstar
+
+
+# Aliases
+alias vim='/Users/kieran/vim/src/vim'
+alias c="clear"
+alias l="ls"
+alias vi="vim"
+
+#git
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gc="git commit -m"
+alias gcam="git commit -a -m"
+alias gp="git pull"
+alias gpom="git push origin master"
+
+recursivegrep () { grep -r "$*" . }
+alias rg="recursivegrep"
+
+# Clojure
+alias startrepl="screen -dmS clojure_repl lein repl"
+alias sr="screen -dmS clojure_repl lein repl"
+alias viewrepl="screen -R clojure_repl"
+alias vr="screen -R clojure_repl"
+
+# kill all detached screens
+killscreens () {
+    screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
+}
+
+CASE_SENSITIVE="false"
 

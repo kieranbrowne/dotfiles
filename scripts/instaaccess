@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo instagram client id:
+read CLIENTID
+echo instagram client secret:
+read CLIENTSECRET
+echo instagram redirect uri:
+read AUTHORIZATIONREDIRECTURI
+echo the code from the authorisation:
+read AUTHORIZATIONCODE
+
+curl -F "client_id=$CLIENTID" \
+    -F "client_secret=$CLIENTSECRET" \
+    -F "grant_type=authorization_code" \
+    -F "redirect_uri=$AUTHORIZATIONREDIRECTURI" \
+    -F "code=$AUTHORIZATIONCODE" \
+    https://api.instagram.com/oauth/access_token

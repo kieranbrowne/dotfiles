@@ -1,36 +1,27 @@
 # .dotfiles
 
-## Installation
+## OSX
 
-### Local machines
-
-```
-git clone git@github.com:kierantbrowne/dotfiles.git
-source dotfiles/install.sh
-```
-
-### Remotely install using curl
-
-Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
-```
-sh -c "`curl -fsSL https://raw.github.com/kierantbrowne/dotfiles/master/remote-install.sh`"
+```shell
+$ cd .dotfiles
+$ make osx
+$ ./brew
 ```
 
-Or, using wget:
-```
-sh -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/kierantbrowne/dotfiles/master/remote-install.sh`"
+## Linux
+
+```shell
+$ cd .dotfiles
+$ make linux
+$ sudo ./apt
 ```
 
-Or, for an ultra-minimal install (say on an old server):
-```
-wget --no-check-certificate -O ~/.vimrc https://raw.githubusercontent.com/kierantbrowne/dotfiles/master/vimrc &&
-wget --no-check-certificate -P ~/.vim/colors/ https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+# Uninstallation
+
+```shell
+make clean
 ```
 
-Replace bad vim with good vim:
-```
-sh -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/kierantbrowne/dotfiles/master/remote-install-vim.sh`"
-```
 
 ## Credit where credit is due
 

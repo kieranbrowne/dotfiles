@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+# this script tests the download speeds
+import urllib2
+from datetime import datetime
+
+startTime = datetime.now()
+u = urllib2.urlopen('https://raw.githubusercontent.com/kieranbrowne/dotfiles/master/README.md')
+endTime = datetime.now()
+
+#account for computational time
+st = datetime.now()
+et = datetime.now()
+offset = float((et-st).microseconds)
+
+size = float(u.info().getheaders("Content-Length")[0])/1024 
+time = float((endTime-startTime).microseconds) - offset
+kbps = "%.2f" % float((size/time)*1000000)
+
+print "%.2f" % size + " kilobytes downloaded in " + "%.2f" % float(time/1000000) + " seconds."
+print "Network speed is currently " + kbps + " kilobytes per second."
+

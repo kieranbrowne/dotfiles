@@ -1,4 +1,0 @@
-#!/bin/bash
-# generate a random password
-< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-${1:-16}};echo;
-

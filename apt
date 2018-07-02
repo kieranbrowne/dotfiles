@@ -1,0 +1,13 @@
+# Get latest version
+apt update && apt upgrade
+
+# my packages
+
+apt install emacs24
+apt install fail2ban
+apt install ffmpeg
+apt install flac
+apt install git
+apt install nvm
+apt install pandoc
+apt install postgresql
